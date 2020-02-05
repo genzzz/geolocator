@@ -1,23 +1,30 @@
 <?php
-namespace Genzzz\Geolocator\Controllers;
+namespace Genzzz\Geolocator;
+
+use Genzzz\Geolocator\Model;
 
 class Geolocator
 {
-    protected $model;
+    private $model;
 
-    protected $config;
+    private $config;
 
-    public function __construct()
+    protected function set_model(Model $model)
     {
-        $this->config = config('ip2location');
+        $this->model = $model;
     }
 
-    public function all_countries()
+    protected function set_config($config)
     {
-        return $this->model->get_all_countries();
+        $this->config = $config;
     }
 
-    public function search_ip($ip)
+    final public function all_countries()
+    {
+        return $this->model->all_countries();
+    }
+
+    final public function search_ip($ip)
     {
         if(!$version = $this->ip_validator($ip))
             return;
@@ -40,8 +47,12 @@ class Geolocator
 
     private function ip_attributes($ip, $version)
     {
-        if($this->config['db_version'] == 4)
-            return [$version, ip2long($ip)];
+        if($this->config['db_version'] == 4){
+            if($version == 4)
+                return [$version, ip2long($ip)];
+
+            return;
+        }
         
         if($this->config['db_version'] == 6){
             if($version == 4)
