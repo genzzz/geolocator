@@ -25,10 +25,8 @@ abstract class Model
 
     final protected function protect_results($results)
     {
-        array_filter($results, function($key){
+        return array_filter($results, function($key){
             return !in_array($key, $this->protected);
         }, ARRAY_FILTER_USE_KEY);
-
-        return $results;
     }
 }
