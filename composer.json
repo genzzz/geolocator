@@ -13,14 +13,5 @@
             "Genzzz\\Geolocator\\": "./src"
         }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url":  "https://github.com/genzzz/helpers.git"
-        }
-    ],
-    "require": {
-        "genzzz/helpers": "dev-master"
-    },
     "minimum-stability": "dev"
 }
