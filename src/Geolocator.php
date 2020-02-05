@@ -47,8 +47,12 @@ class Geolocator
 
     private function ip_attributes($ip, $version)
     {
-        if($this->config['db_version'] == 4)
-            return [$version, ip2long($ip)];
+        if($this->config['db_version'] == 4){
+            if($version == 4)
+                return [$version, ip2long($ip)];
+
+            return;
+        }
         
         if($this->config['db_version'] == 6){
             if($version == 4)
