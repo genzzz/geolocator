@@ -13,5 +13,13 @@
             "Genzzz\\Geolocator\\": "./src"
         }
     },
-    "minimum-stability": "dev"
+    "autoload-dev": {
+        "psr-4": {
+            "Genzzz\\Geolocator\\Tests\\": "./tests/src"
+        }
+    },
+    "minimum-stability": "dev",
+    "require-dev": {
+        "phpunit/phpunit": "^8"
+    }
 }
